@@ -1,0 +1,45 @@
+<!-- templates/user_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - {{ user_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { padding: 20px; }
+        nav ul { list-style-type: none; padding: 0; margin-top: 20px; /* Added margin-top for spacing after welcome message */ }
+        nav ul li { display: inline; margin-right: 15px; }
+        .welcome-message { /* Style for the welcome message */
+            font-size: 1.2em; /* Slightly larger font */
+            color: #333;
+            margin-bottom: 20px; /* Space below the welcome message */
+            text-align: center; /* Center the welcome message */
+        }
+        h1 { /* Ensure h1 (User Dashboard) is also centered if not already by global style */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Dashboard</h1>
+        
+        <section>
+            <h2 class="welcome-message">Welcome, {{ user_name }}!</h2> 
+        </section>
+
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('view_appointments_user') }}">My Appointments</a></li>
+                <li><a href="{{ url_for('book_appointment') }}">Book Appointment</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Original paragraph moved or can be removed if welcome message is sufficient -->
+        <!-- <p>Manage your appointments from the links above.</p> -->
+    </div>
+</body>
+</html>

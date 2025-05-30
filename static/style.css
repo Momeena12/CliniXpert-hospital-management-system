@@ -1,0 +1,193 @@
+/* Reset and base styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Home page specific background */
+body.home-page {
+    height: 100vh;
+    background: url("/static/images/doctor-bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+body.home-page::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);  /* Faded white overlay */
+    z-index: 0;
+}
+
+/* Centered content block on home page */
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    top: 20%;
+    transform: translateY(-10%);
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.container {
+    max-width: 700px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 25px 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #004080;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Navigation and login buttons */
+.login-links,
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 0;
+    list-style: none;
+    margin: 20px 0;
+}
+
+.login-links a,
+nav ul li a {
+    text-decoration: none;
+    padding: 12px 20px;
+    min-width: 160px;
+    text-align: center;
+    background-color: #004080;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.login-links a:hover,
+nav ul li a:hover {
+    background-color: #0073e6;
+}
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+}
+
+button {
+    background-color: #004080;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0073e6;
+}
+
+/* Error styling */
+.error {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* General link styling */
+a {
+    color: #004080;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #004080;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .login-links,
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .login-links a,
+    nav ul li a {
+        min-width: unset;
+        width: 100%;
+    }
+}

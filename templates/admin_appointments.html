@@ -1,0 +1,105 @@
+<!-- templates/admin_appointments.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - All Appointments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <style>
+        /* Reusing action button styles, ensure these are in style.css or defined here */
+        .action-links a, .action-links button {
+            text-decoration: none; padding: 6px 10px; margin-right: 5px;
+            border-radius: 4px; font-size: 0.9em; cursor: pointer; border: none;
+        }
+        .conducted-btn { background-color: #28a745; color: white; } /* Green */
+        .conducted-btn:hover { background-color: #218838; }
+        .cancel-btn { background-color: #ffc107; color: #333; } /* Yellow for cancel */
+        .cancel-btn:hover { background-color: #e0a800; }
+        .delete-btn { background-color: #dc3545; color: white; } /* Red - if you ever add delete appointment */
+        .delete-btn:hover { background-color: #c82333; }
+
+        .back-link-container { margin-top: 20px; text-align: center; }
+        /* Basic alert styling */
+        .alert { padding: 10px; margin-bottom: 15px; border: 1px solid transparent; border-radius: 4px; }
+        .alert-success { color: #155724; background-color: #d4edda; border-color: #c3e6cb; }
+        .alert-danger, .alert-error { color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; }
+        .alert-info { color: #0c5460; background-color: #d1ecf1; border-color: #bee5eb; }
+        .status-scheduled { color: #007bff; font-weight: bold; }
+        .status-conducted { color: #28a745; font-weight: bold; }
+        .status-cancelled { color: #dc3545; font-weight: bold; }
+        .status-other { color: #6c757d; font-weight: bold; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>All Appointments</h1>
+     <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% set alert_category = 'info' if category == 'message' else category %}
+                    <div class="alert alert-{{ alert_category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    {% if appointments %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Time Slot</th>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.id }}</td>
+                <td>{{ appointment.appointment_date.strftime('%Y-%m-%d') if appointment.appointment_date else 'N/A' }}</td>
+                <td>{{ appointment.time_slot }}</td>
+                <td>{{ appointment.patient_name }}</td>
+                <td>{{ appointment.doctor_name }}</td>
+                <td>
+                    <span class="status-{{ appointment.status.lower() if appointment.status else 'other' }}">
+                        {{ appointment.status if appointment.status else 'N/A' }}
+                    </span>
+                </td>
+                <td class="action-links">
+                    {% if appointment.status == 'Scheduled' %}
+                    <form action="{{ url_for('update_appointment_status', appointment_id=appointment.id, new_status='Conducted') }}" method="POST" style="display:inline;">
+                        <button type="submit" class="conducted-btn">Mark Conducted</button>
+                    </form>
+                    <form action="{{ url_for('update_appointment_status', appointment_id=appointment.id, new_status='Cancelled') }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to cancel this appointment?');">
+                        <button type="submit" class="cancel-btn">Cancel</button>
+                    </form>
+                    {% elif appointment.status == 'Conducted' %}
+                        <span>-</span>
+                    {% elif appointment.status == 'Cancelled' %}
+                         <form action="{{ url_for('update_appointment_status', appointment_id=appointment.id, new_status='Scheduled') }}" method="POST" style="display:inline;" title="Re-schedule this cancelled appointment">
+                            <button type="submit" class="btn btn-sm btn-info">Re-Schedule</button>
+                        </form>
+                    {% else %}
+                        <span>-</span> {# No actions for other statuses or if already acted upon #}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No appointments found.</p>
+    {% endif %}
+    <br>
+    <div class="back-link-container">
+         <a href="{{ url_for('admin_dashboard') }}" class="button-link">Back to Dashboard</a>
+    </div>
+</div>
+</body>
+</html>

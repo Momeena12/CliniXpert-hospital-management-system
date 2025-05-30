@@ -1,0 +1,123 @@
+<!-- templates/edit_patient.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Patient - {{ patient.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <style>
+        /* Styles can be enhanced or moved to style.css */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="tel"], /* For phone */
+        select,
+        textarea {
+            /* width: 100%; from style.css */
+            /* padding: 10px; from style.css */
+            /* border: 1px solid #ccc; from style.css */
+            /* border-radius: 5px; from style.css */
+            /* font-size: 14px; from style.css */
+        }
+        .button-group {
+            margin-top: 20px;
+        }
+        .button-group button, .button-group a {
+            margin-right: 10px;
+        }
+         /* Style for cancel button */
+        .cancel-btn {
+            background-color: #6c757d; /* Gray */
+            color: white;
+            padding: 12px; /* Match submit button padding */
+            border: none;
+            border-radius: 5px;
+            text-decoration: none; /* For <a> tag acting as button */
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block; /* For <a> tag */
+        }
+        .cancel-btn:hover {
+            background-color: #5a6268;
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Edit Patient: {{ patient.name }}</h1>
+
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+    </div>
+
+    <form method="POST" action="{{ url_for('edit_patient', patient_id=patient.id) }}">
+        <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" value="{{ patient.name }}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ patient.email }}" required />
+        </div>
+        
+        <!-- Password editing is often handled separately or not directly edited for security -->
+        <!-- <div class="form-group">
+            <label for="password">New Password (leave blank to keep current):</label>
+            <input type="password" id="password" name="password" />
+        </div> -->
+
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" value="{{ patient.age if patient.age is not none else '' }}" min="1" max="120" />
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="" {% if not patient.gender %}selected{% endif %}>-- Select Gender --</option>
+                <option value="Male" {% if patient.gender == 'Male' %}selected{% endif %}>Male</option>
+                <option value="Female" {% if patient.gender == 'Female' %}selected{% endif %}>Female</option>
+                <option value="Other" {% if patient.gender == 'Other' %}selected{% endif %}>Other</option>
+                <option value="Prefer not to say" {% if patient.gender == 'Prefer not to say' %}selected{% endif %}>Prefer not to say</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" value="{{ patient.phone if patient.phone else '' }}" />
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="3">{{ patient.address if patient.address else '' }}</textarea>
+        </div>
+        
+        <div class="button-group">
+            <button type="submit">Update Patient</button>
+            <a href="{{ url_for('view_patients') }}" class="cancel-btn">Cancel</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

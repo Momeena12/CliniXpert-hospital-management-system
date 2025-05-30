@@ -1,0 +1,66 @@
+<!-- templates/admin_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <style>
+        /* You can add specific styles here if needed, or rely on style.css */
+        .container {
+            /* Styles from style.css will apply */
+        }
+        h1 {
+            /* text-align: center; from style.css */
+            /* color: #004080; from style.css */
+        }
+        .welcome-message {
+            font-size: 1.2em; /* Slightly larger font for welcome */
+            color: #333;
+            margin-top: 10px; /* Space above the welcome message */
+            margin-bottom: 25px; /* Space below the welcome message before nav */
+            text-align: center;
+        }
+        nav ul.dashboard-tabs {
+            /* display: flex; from style.css */
+            /* justify-content: center; from style.css */
+            /* gap: 15px; from style.css */
+            /* padding: 0; from style.css */
+            /* list-style: none; from style.css */
+            /* margin: 20px 0; from style.css */
+            /* The margin might be adjusted by .welcome-message's margin-bottom */
+        }
+        nav ul.dashboard-tabs li a {
+            /* Styles from style.css will apply */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+
+        <section>
+            <!-- Updated Welcome Message -->
+            <h2 class="welcome-message">Welcome Dear {{ session['admin_username'] }}!</h2>
+        </section>
+
+        <nav>
+            <ul class="dashboard-tabs">
+                <li><a href="{{ url_for('view_patients') }}">Manage Patients</a></li>
+                <li><a href="{{ url_for('view_doctors') }}">Manage Doctors</a></li>
+                <li><a href="{{ url_for('view_appointments') }}">Manage Appointments</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Removed the old welcome message paragraph, as the new h2 serves this purpose -->
+        <!-- 
+        <section>
+            <h2>Welcome, {{ session['admin_username'] }}!</h2>
+            <p>Use the links above to manage the hospital system.</p>
+        </section> 
+        -->
+    </div>
+</body>
+</html>
