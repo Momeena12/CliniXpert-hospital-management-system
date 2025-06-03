@@ -119,4 +119,5 @@ Contributions are welcome! If you have suggestions for improvements or new featu
 - Special thanks to the contributors who helped improve this project.
 
 For any Queries reach out to us at momeenaa03@gmail.com
-LinkeDin: https://www.linkedin.com/in/momeena-azhar-0b9943288?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
+
+LinkedIn: https://www.linkedin.com/in/momeena-azhar-0b9943288?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
