@@ -81,31 +81,32 @@ The Hospital Management System (HMS) is a web application designed to facilitate
 
 ## File Structure
 hospital-management-system/
-│
-├── app.py                     # Main application file
-├── config.py                  # Database configuration
-├── requirements.txt           # Python dependencies
-├── MYSQLsqlconnector.session.sql # SQL scripts for database setup
-│
-├── templates/                 # HTML templates
-│   ├── add_doctor.html
-│   ├── admin_dashboard.html
-│   ├── admin_doctors.html
-│   ├── admin_patients.html
-│   ├── admin_appointments.html
-│   ├── book_appointment.html
-│   ├── edit_patient.html
-│   ├── home.html
-│   ├── login_admin.html
-│   ├── login_user.html
-│   ├── register_user.html
-│   ├── user_appointments.html
-│   └── user_dashboard.html
-│
-└── static/                   # Static files (CSS, images)
-    ├── style.css
-    └── images/
+Here’s the file structure formatted as a bullet list for your GitHub README:
 
+- **hospital-management-system/**
+  - `app.py`                     - Main application file
+  - `config.py`                  - Database configuration
+  - `requirements.txt`           - Python dependencies
+  - `MYSQLsqlconnector.session.sql` - SQL scripts for database setup
+  - **templates/**                 - HTML templates
+    - `add_doctor.html`
+    - `admin_dashboard.html`
+    - `admin_doctors.html`
+    - `admin_patients.html`
+    - `admin_appointments.html`
+    - `book_appointment.html`
+    - `edit_patient.html`
+    - `home.html`
+    - `login_admin.html`
+    - `login_user.html`
+    - `register_user.html`
+    - `user_appointments.html`
+    - `user_dashboard.html`
+  - **static/**                   - Static files (CSS, images)
+    - `style.css`
+    - **images/**
+
+You can copy and paste this bullet list directly into your README file.
 ## Contributing
 Contributions are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request.
 
