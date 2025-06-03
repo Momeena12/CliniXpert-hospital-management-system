@@ -1,8 +1,11 @@
-# Hospital Management System (HMS)
+# CliniXpert Hospital Management System 
+
+<img width="1512" alt="Screenshot 2025-06-03 at 8 11 32 PM" src="https://github.com/user-attachments/assets/42639f1b-d865-4798-85d1-a3d2d6ed93d5" />
+
 
 ## Overview
 
-The Hospital Management System (HMS) is a web application designed to facilitate the management of hospital operations, including patient registration, doctor management, appointment scheduling, and administrative tasks. Built using Flask and MySQL, this application provides a user-friendly interface for both administrators and patients.
+The CliniXpert (Hospital Management System) is a web application designed to facilitate the management of hospital operations, including patient registration, doctor management, appointment scheduling, and administrative tasks. Built using Flask and MySQL, this application provides a user-friendly interface for both administrators and patients.
 
 ## Features
 
@@ -16,6 +19,11 @@ The Hospital Management System (HMS) is a web application designed to facilitate
   - User registration and login
   - View and manage personal appointments
   - Book new appointments with doctors
+
+<img width="1512" alt="Screenshot 2025-06-03 at 8 15 32 PM" src="https://github.com/user-attachments/assets/0a034392-5898-44b8-9bbc-a851f6d70027" />
+
+<img width="1510" alt="Screenshot 2025-06-03 at 8 14 42 PM" src="https://github.com/user-attachments/assets/1f36cdd6-9ccf-4b42-806e-04f1ea54b020" />
+
 
 ## Technologies Used
 
