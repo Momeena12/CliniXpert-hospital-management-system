@@ -25,10 +25,7 @@ The Hospital Management System (HMS) is a web application designed to facilitate
 - **Libraries:** Flask, mysql-connector-python
 
 ## Installation
-
-### Prerequisites
-
-- Python 3.x
+- Python 
 - MySQL Server
 - pip (Python package installer)
 
@@ -36,7 +33,7 @@ The Hospital Management System (HMS) is a web application designed to facilitate
 
 1. **Clone the Repository:**
    bash
-   git clone https://github.com/yourusername/hospital-management-system.git
+   git clone https://github.com/Momeena12/hospital-management-system.git
    cd hospital-management-system
    
 
@@ -106,10 +103,12 @@ Here’s the file structure formatted as a bullet list for your GitHub README:
     - `style.css`
     - **images/**
 
-You can copy and paste this bullet list directly into your README file.
 ## Contributing
 Contributions are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request.
 
 ## Acknowledgments
 - Thanks to the Flask community for their support and documentation.
 - Special thanks to the contributors who helped improve this project.
+
+For any Queries reach out to us at momeenaa03@gmail.com
+LinkeDin: https://www.linkedin.com/in/momeena-azhar-0b9943288?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
